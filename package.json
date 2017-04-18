@@ -1,0 +1,11 @@
+{
+  "name": "sewable",
+  "version": "0.0.1",
+  "description": "Kirsty's website",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "?.git"
+  },
+  "author": "Wesley Brown"
+}
