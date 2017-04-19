@@ -1,8 +1,8 @@
 {
-  "name": "sewable",
+  "name": "Gulp Starter Base",
   "version": "0.0.1",
-  "description": "Kirsty's website",
-  "main": "index.js",
+  "description": "Codebase starter for gulp.js based project.",
+  "main": "index.html",
   "repository": {
     "type": "git",
     "url": "https://github.com/webblybrown/sewable.git"
