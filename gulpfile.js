@@ -3,8 +3,10 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat');
     compass = require('gulp-compass');
-// Create plugins from install
+    connect = require('gulp-connect');
+// Create gulp plugins from node install
 // npm install --save-dev gulp-**
+
 
 var jsSources = ['components/scripts/*.js'];
 var sassSources = ['components/sass/style.scss'];
@@ -15,6 +17,7 @@ gulp.task('js', function() {
      .pipe(concat('script.js'))
      .pipe(browserify())
      .pipe(gulp.dest('builds/development/js'))
+     .pipe(connect.reload())
 });
 // Concat all javascript files
 
@@ -27,8 +30,17 @@ gulp.task('compass', function() {
      }))
      .on('error', gutil.log)
      .pipe(gulp.dest('builds/development/css'))
+     .pipe(connect.reload())
 });
 // Compiles SASS and Compass CSS
+
+gulp.task('connect', function() {
+    connect.server({
+    root: 'builds/development',
+    livereload: true
+    });
+});
+// Setup server for live reload
 
 
 gulp.task('watch', function() {
@@ -37,5 +49,5 @@ gulp.task('watch', function() {
 });
 // Watch task, looks for changes and automatically updates. 
 
-gulp.task('default', ['js','compass', 'watch']);
+gulp.task('default', ['js','compass', 'connect', 'watch']);
 // Runs all tasks 
