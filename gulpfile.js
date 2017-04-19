@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 
 var jsSources = ['components/scripts/*.js'];
 var sassSources = ['components/sass/style.scss'];
+var htmlSources = ['builds/development/*.html'];
 // Paths to source files
 
 gulp.task('js', function() {
@@ -20,6 +21,12 @@ gulp.task('js', function() {
      .pipe(connect.reload())
 });
 // Concat all javascript files
+
+gulp.task('html', function() {
+     gulp.src(htmlSources)
+     .pipe(connect.reload())
+});
+// Reoad changes to HTML
 
 gulp.task('compass', function() {
     gulp.src(sassSources)
@@ -45,9 +52,10 @@ gulp.task('connect', function() {
 
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
+    gulp.watch(htmlSources, ['html']);
     gulp.watch('components/sass/*.scss', ['compass']);
 });
 // Watch task, looks for changes and automatically updates. 
 
-gulp.task('default', ['js','compass', 'connect', 'watch']);
+gulp.task('default', ['js', 'html', 'compass', 'connect', 'watch']);
 // Runs all tasks 
