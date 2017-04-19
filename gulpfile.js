@@ -7,17 +7,18 @@ var gulp = require('gulp'),
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
 
-
+var devBuild = ['builds/development/'];
+var prodBuild = ['builds/production/'];
 var jsSources = ['components/scripts/*.js'];
 var sassSources = ['components/sass/style.scss'];
 var htmlSources = ['builds/development/*.html'];
-// Paths to source files
+// Paths to files
 
 gulp.task('js', function() {
     gulp.src(jsSources)
      .pipe(concat('script.js'))
      .pipe(browserify())
-     .pipe(gulp.dest('builds/development/js'))
+     .pipe(gulp.dest(devBuild + 'js'))
      .pipe(connect.reload())
 });
 // Concat all javascript files
@@ -31,12 +32,13 @@ gulp.task('html', function() {
 gulp.task('compass', function() {
     gulp.src(sassSources)
      .pipe(compass({
+     	css: devBuild + 'css',
      	sass: 'components/sass',
-     	image:'builds/development/images',
+     	image: devBuild + 'images',
      	style: 'expanded'
      }))
      .on('error', gutil.log)
-     .pipe(gulp.dest('builds/development/css'))
+     .pipe(gulp.dest(devBuild + 'css'))
      .pipe(connect.reload())
 });
 // Compiles SASS and Compass CSS

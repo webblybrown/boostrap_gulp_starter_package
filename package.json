@@ -1,11 +1,11 @@
 {
   "name": "Gulp Starter Base",
   "version": "0.0.1",
-  "description": "Codebase starter for gulp.js based project.",
+  "description": "Codebase starter for gulp.js based project using boostrap",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webblybrown/gulp_js_starter.git"
+    "url": "https://github.com/webblybrown/boostrap_gulp_starter_package.git"
   },
   "author": "Wesley Brown",
   "devDependencies": {
