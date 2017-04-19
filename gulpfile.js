@@ -4,21 +4,45 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
     compass = require('gulp-compass');
     connect = require('gulp-connect');
+    gulpif = require('gulp-if');
+    uglify = require('gulp-uglify');
+
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
 
-var devBuild = ['builds/development/'];
-var prodBuild = ['builds/production/'];
-var jsSources = ['components/scripts/*.js'];
-var sassSources = ['components/sass/style.scss'];
-var htmlSources = ['builds/development/*.html'];
+var jsSources,
+    sassSources,
+    htmlSources,
+    outputDir,
+    sassStyle
+
+
+
+env = process.env.NODE_ENV || 'development';
+
+if (env==='development') {
+   outputDir = 'builds/development/';
+   sassStyle = 'expanded';
+} else {
+   outputDir = 'builds/production/';
+   sassStyle = 'compressed';
+}
+
+jsSources = ['components/scripts/*.js'];
+sassSources = ['components/sass/style.scss'];
+htmlSources = ['builds/development/*.html'];
 // Paths to files
+
+
+
+
 
 gulp.task('js', function() {
     gulp.src(jsSources)
      .pipe(concat('script.js'))
      .pipe(browserify())
-     .pipe(gulp.dest(devBuild + 'js'))
+     .pipe(gulpif (env === 'production', uglify()))
+     .pipe(gulp.dest(outputDir + 'js'))
      .pipe(connect.reload())
 });
 // Concat all javascript files
@@ -32,25 +56,24 @@ gulp.task('html', function() {
 gulp.task('compass', function() {
     gulp.src(sassSources)
      .pipe(compass({
-     	css: devBuild + 'css',
+     	css: outputDir + 'css',
      	sass: 'components/sass',
-     	image: devBuild + 'images',
-     	style: 'expanded'
+     	image: outputDir + 'images',
+     	style: sassStyle
      }))
      .on('error', gutil.log)
-     .pipe(gulp.dest(devBuild + 'css'))
+     .pipe(gulp.dest(outputDir + 'css'))
      .pipe(connect.reload())
 });
 // Compiles SASS and Compass CSS
 
 gulp.task('connect', function() {
     connect.server({
-    root: 'builds/development',
+    root: outputDir,
     livereload: true
     });
 });
 // Setup server for live reload
-
 
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
