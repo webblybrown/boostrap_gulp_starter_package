@@ -30,10 +30,12 @@ gulp.task('compass', function() {
 });
 // Compiles SASS and Compass CSS
 
-gulp.task('default', ['js','compass']);
-// Runs all tasks 
 
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
-    gulp.watch(sassSources, ['compass']);
+    gulp.watch('components/sass/*.scss', ['compass']);
 });
+// Watch task, looks for changes and automatically updates. 
+
+gulp.task('default', ['js','compass', 'watch']);
+// Runs all tasks 
