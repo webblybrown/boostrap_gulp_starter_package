@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');
     gulpif = require('gulp-if');
     uglify = require('gulp-uglify');
+    minifyHTML = require('gulp-minify-html');
 
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
@@ -15,6 +16,7 @@ var jsSources,
     htmlSources,
     outputDir,
     sassStyle
+// Create variables for enviroments
 
 
 
@@ -27,6 +29,7 @@ if (env==='development') {
    outputDir = 'builds/production/';
    sassStyle = 'compressed';
 }
+// Conditions for development and production enviroments
 
 jsSources = ['components/scripts/*.js'];
 sassSources = ['components/sass/style.scss'];
@@ -49,9 +52,11 @@ gulp.task('js', function() {
 
 gulp.task('html', function() {
      gulp.src(htmlSources)
+     .pipe(gulpif (env === 'production', minifyHTML()))
+     .pipe(gulpif (env === 'production', gulp.dest(outputDir)))
      .pipe(connect.reload())
 });
-// Reoad changes to HTML
+// Reoad changes to HTML & Minify production HTML
 
 gulp.task('compass', function() {
     gulp.src(sassSources)
