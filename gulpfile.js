@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     bower = require('gulp-bower');
     sass = require('gulp-sass');
     inject = require('gulp-inject');
+    wiredep = require('wiredep').stream;
 
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
@@ -60,7 +61,37 @@ gulp.task('html', function() {
 // Reoad changes to HTML & Minify production HTML
 
 gulp.task('css', function(){
+
+  var injectBootstrapFiles = gulp.src('bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss', {read: false});
+ 
+  function transformBootstrapFilepath(filepath) {
+    return '@import "' + filepath + '";';
+  }
+ 
+  var injectBootstrapOptions = {
+    transform: transformBootstrapFilepath,
+    starttag: '// inject:bootstrap',
+    endtag: '// endinject-bootstrap',
+    addRootSlash: false
+  };
+  
+  var injectFontAwesomeFiles = gulp.src('bower_components/font-awesome/scss/font-awesome.scss', {read: false});
+ 
+  function transformFontAwesomeFilepath(filepath) {
+    return '@import "' + filepath + '";';
+  }
+ 
+  var injectFontAwesomeOptions = {
+    transform: transformFontAwesomeFilepath,
+    starttag: '// inject:font-awesome',
+    endtag: '// endinject-font-awesome',
+    addRootSlash: false
+  };
+
   return gulp.src('components/sass/style.scss')
+    .pipe(wiredep())
+    .pipe(inject(injectFontAwesomeFiles, injectFontAwesomeOptions))
+    .pipe(inject(injectBootstrapFiles, injectBootstrapOptions))
     .pipe(sass())
     .pipe(gulp.dest(outputDir + 'css'))
 });

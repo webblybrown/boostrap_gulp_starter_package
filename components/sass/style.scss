@@ -1,6 +1,13 @@
 // style.scss
 // ==============
-// Add your SASS to the core partials
+// Add your SASS to the core partials, Bootstrap is injected first!
+
+// inject:bootstrap
+// endinject-bootstrap
+
+// inject:font-awesome
+// endinject-font-awesome
+
 
 //Core partials
 @import "variables";
