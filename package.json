@@ -1,5 +1,5 @@
 {
-  "name": "Gulp Starter Base",
+  "name": "Bootstrap and Gulp Starter Base",
   "version": "0.0.1",
   "description": "Codebase starter for gulp.js based project using boostrap",
   "main": "index.html",
@@ -9,13 +9,13 @@
   },
   "author": "Wesley Brown",
   "devDependencies": {
-    "compass": "^0.1.1",
+    "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
-    "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
     "gulp-if": "^2.0.2",
+    "gulp-inject": "^4.2.0",
     "gulp-minify-html": "^1.0.6",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.8",

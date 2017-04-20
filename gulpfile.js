@@ -2,14 +2,17 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat');
-    compass = require('gulp-compass');
     connect = require('gulp-connect');
     gulpif = require('gulp-if');
     uglify = require('gulp-uglify');
     minifyHTML = require('gulp-minify-html');
+    bower = require('gulp-bower');
+    sass = require('gulp-sass');
+    inject = require('gulp-inject');
 
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
+
 
 var jsSources,
     sassSources,
@@ -17,8 +20,6 @@ var jsSources,
     outputDir,
     sassStyle
 // Create variables for enviroments
-
-
 
 env = process.env.NODE_ENV || 'development';
 
@@ -34,8 +35,8 @@ if (env==='development') {
 jsSources = ['components/scripts/*.js'];
 sassSources = ['components/sass/style.scss'];
 htmlSources = ['builds/development/*.html'];
+bowerDir = ['bower_components/' ];
 // Paths to files
-
 
 
 
@@ -58,19 +59,19 @@ gulp.task('html', function() {
 });
 // Reoad changes to HTML & Minify production HTML
 
-gulp.task('compass', function() {
-    gulp.src(sassSources)
-     .pipe(compass({
-     	css: outputDir + 'css',
-     	sass: 'components/sass',
-     	image: outputDir + 'images',
-     	style: sassStyle
-     }))
-     .on('error', gutil.log)
-     .pipe(gulp.dest(outputDir + 'css'))
-     .pipe(connect.reload())
+gulp.task('css', function(){
+  return gulp.src('components/sass/style.scss')
+    .pipe(sass())
+    .pipe(gulp.dest(outputDir + 'css'))
 });
-// Compiles SASS and Compass CSS
+
+gulp.task('inject-css', ['css'], function(){
+  var injectFiles = gulp.src([outputDir + 'css/style.css']);
+ 
+  return gulp.src(outputDir + 'index.html')
+    .pipe(inject(injectFiles, {ignorePath: outputDir, addRootSlash: false }))
+    .pipe(gulp.dest(outputDir));
+});
 
 gulp.task('connect', function() {
     connect.server({
@@ -83,9 +84,9 @@ gulp.task('connect', function() {
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
     gulp.watch(htmlSources, ['html']);
-    gulp.watch('components/sass/*.scss', ['compass']);
+    gulp.watch('components/sass/*.scss', ['css']);
 });
 // Watch task, looks for changes and automatically updates. 
 
-gulp.task('default', ['js', 'html', 'compass', 'connect', 'watch']);
+gulp.task('default', ['js', 'inject-css', 'html',  'connect', 'watch']);
 // Runs all tasks 
