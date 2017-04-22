@@ -1,6 +1,6 @@
 {
   "name": "Bootstrap and Gulp Starter Base",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Codebase starter for gulp.js based project using boostrap",
   "main": "index.html",
   "repository": {
