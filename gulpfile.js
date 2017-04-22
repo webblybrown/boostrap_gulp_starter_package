@@ -10,6 +10,8 @@ var gulp = require('gulp'),
     sass = require('gulp-sass');
     inject = require('gulp-inject');
     wiredep = require('wiredep').stream;
+    imagemin = require('gulp-imagemin');
+    pngcrush = require('imagemin-pngcrush');
 
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
@@ -36,6 +38,7 @@ if (env==='development') {
 jsSources = ['components/scripts/*.js'];
 sassSources = ['components/sass/style.scss'];
 htmlSources = ['builds/development/*.html'];
+imageSources = ['builds/development/images/**/*.*'];
 bowerDir = ['bower_components/' ];
 // Paths to files
 
@@ -59,6 +62,18 @@ gulp.task('html', function() {
      .pipe(connect.reload())
 });
 // Reoad changes to HTML & Minify production HTML
+
+gulp.task('images', function() {
+     gulp.src(imageSources)
+     .pipe(gulpif (env === 'production', imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [pngcrush()]
+     })))
+     .pipe(gulpif (env === 'production', gulp.dest(outputDir + 'images')))
+     .pipe(connect.reload())
+});
+// Compress all images 
 
 gulp.task('css', function(){
 
@@ -95,14 +110,8 @@ gulp.task('css', function(){
     .pipe(sass())
     .pipe(gulp.dest(outputDir + 'css'))
 });
+// Inject Bootstrap & Font Awesome into style.sass
 
-gulp.task('inject-css', ['css'], function(){
-  var injectFiles = gulp.src([outputDir + 'css/style.css']);
- 
-  return gulp.src(outputDir + 'index.html')
-    .pipe(inject(injectFiles, {ignorePath: outputDir, addRootSlash: false }))
-    .pipe(gulp.dest(outputDir));
-});
 
 gulp.task('connect', function() {
     connect.server({
@@ -115,9 +124,10 @@ gulp.task('connect', function() {
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
     gulp.watch(htmlSources, ['html']);
+    gulp.watch(imageSources, ['images']);
     gulp.watch('components/sass/*.scss', ['css']);
 });
 // Watch task, looks for changes and automatically updates. 
 
-gulp.task('default', ['js', 'inject-css', 'html',  'connect', 'watch']);
+gulp.task('default', ['js', 'css', 'html', 'images','connect', 'watch']);
 // Runs all tasks 
