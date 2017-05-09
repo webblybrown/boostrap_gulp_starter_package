@@ -1,11 +1,188 @@
 <!DOCTYPE html>
-<html>
- <head>
-  <title>Bootstrap Gulp Starter Package</title>
-  <link rel="stylesheet" href="css/style.css">
- </head>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Cherries Court, Boscombe</title>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
 <body>
-<h1>Hello World!</h1>
+
+
+  <div class="container"> 
+  
+  <img src="images/logo.jpg" alt="logo" class="logo" />
+ 
+
+</div>
+<div class="row red-bar">
+  <h1>Cherries Court, Boscombe</h1>
+</div>
+<div class="container">
+ <div class="row">
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="images/cherries-court-1.jpg" alt="A render of a house at Cherries Court">
+    </div>
+
+    <div class="item">
+      <img src="images/cherries-court-2.jpg" alt="A render of a house at Cherries Court">
+	  </div>
+	  
+    <div class="item">
+      <img src="images/cherries-court-3.jpg" alt="A render of a house at Cherries Court">
+    </div>
+  </div>
+
+ 
+</div>
+	</div>
+          
+          
+  <div class="row">
+    <div class="col-md-4 menu">
+      <nav role="navigation">
+        <ul>
+          <li><a href="#">Available Plots</a></li>
+          <li><a href="#">Local Area</a></li>
+          <li><a href="#">Siteplan</a></li>
+          <li><a href="#">View Map</a></li>
+          <li><a href="#">Buying With Us</a></li>
+          <li><a href="#">Help to buy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-md-8 side">
+      <aside> <p>Boscombe is a historical suburb of
+        Bournemouth which developed rapidly from
+        a small village into a seaside resort in the 19th
+        century. It has a strong cultural history,
+        stunning beach location, award winning
+        parks and a rich architectural diversity
+        including Victoriana, Art Deco, Gothic and
+        Modernist. Boscombe pier opened in 1889 and
+        was given a makeover
+        in 2008 since when art
+        exhibitions and live
+        music performances
+        have taken place. In 2009,
+        the website Nothing To See
+        Here named it Britain’s
+        coolest pier with the
+        National Piers Society voting
+        it Pier of the Year 2010. To the east of the pier
+        the seafront has its own Coastal Activity Park.
+        Boscombe also has some pretty ‘interesting’
+		  history.</p><p> There is the Boscombe Devil- a gargoyle
+        located facing the Boscombe Grand Theatre
+        (now the O2 Academy) placed there in the
+        1920s by the Lord’s Day Observance Society
+        to show disapproval at the theatre’s decision
+        to open on Sundays. Also, the Shelley Theatre,
+        built for Mary Shelley, author of Frankenstein, is
+        in Boscombe and is a fantastic cultural facility
+        steeped in history sympathetically restored to
+        former glory. Boscombe is currently undergoing
+        a major investment and regeneration
+        programme making it an ideal location for young
+        people to make a life in. Bournemouth Borough
+        Council have stated their vision of Boscombe
+        as having … “welcoming, diverse, safe and clean
+        neighbourhoods that people are proud of,
+        offering positive opportunities for all and
+        an arts and heritage
+        inspired creative buzz.”</p>
+        <p></p>This has to be a
+        fantastic place for
+        local young people
+        to make their home
+        and to support this,
+        Bournemouth Borough
+        Council is building 11 shared ownership homes in
+        the vibrant centre of Boscombe.
+        Cherries Court will be a mix of two and three
+        bed shared ownership homes prioritised for
+        local residents wanting to be home owners but
+        not being able to afford to buy on the open
+        market. The development is within walking
+        distance to the town centre, good transport
+        links to the heart of Bournemouth and less than
+		  a mile from the beach!</p> </aside>
+    </div>
+  </div>
+</div>
+<div class="row grey-bar">
+  <h1>Cherries Court, Boscombe</h1>
+</div>
+
+<div class="parallax">
+  <div class="parallax-div1"> SOME TEST </div>
+</div>
+<div class="row dark-bar">
+  <div class="container">
+    <div class="col-md-6">
+      <h1>Contact Us</h1>
+    </div>
+    <div class="col-md-6"> 
+      <!-- Start Contact Form -->
+      <form role="form" id="contactForm" class="contact-form" data-toggle="validator" class="shake">
+      <div class="form-group">
+        <div class="controls">
+          <input type="text" id="name" class="form-control" placeholder="Name" required data-error="Please enter your name">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="controls">
+          <input type="email" class="email form-control" id="email" placeholder="Email" required data-error="Please enter your email">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="controls">
+          <input type="text" id="msg_subject" class="form-control" placeholder="Subject" required data-error="Please enter your message subject">
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="controls">
+          <textarea id="message" rows="7" placeholder="Massage" class="form-control" required data-error="Write your message"></textarea>
+          <div class="help-block with-errors"></div>
+        </div>
+      </div>
+      <button type="submit" id="submit" class="btn btn-effect"><i class="fa fa-check"></i> Send Message</button>
+      <div id="msgSubmit" class="h3 text-center hidden"></div>
+      <div class="clearfix"></div>
+      </form>
+      <!-- End Contact Form --> 
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script> 
 <script src="js/script.js"></script>
 </body>
 </html>

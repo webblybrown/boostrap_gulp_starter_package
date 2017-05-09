@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -8144,4 +8145,103 @@ button.close {
   clip: auto; }
 
 body {
-  background-color: red; }
+  font-size: 16px;
+  background-color: #fff;
+  color: #666;
+  font-family: "Montserrat", sans-serif; }
+
+.logo {
+  position: absolute;
+  top: 0;
+  z-index: 99;
+  padding: 0px 25px; }
+
+nav ul {
+  list-style: none; }
+  nav ul li {
+    margin-bottom: 10px; }
+  nav ul li a {
+    color: #fff;
+    font-size: 2rem; }
+
+.red-bar {
+  background: #b30009;
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  margin-top: 50px; }
+
+.grey-bar {
+  background: #ccc;
+  text-align: center;
+  color: #fff;
+  padding: 50px; }
+
+.dark-bar {
+  background: #333;
+  text-align: center;
+  color: #fff;
+  padding: 50px; }
+
+.menu {
+  background: #ccc;
+  padding: 25px;
+  min-height: 700px; }
+
+.side {
+  padding: 25px; }
+
+.parallax {
+  /* The image used */
+  background-image: url("../images/parallax-1.jpg");
+  /* Set a specific height */
+  min-height: 500px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.parallax-div1 {
+  background: #000;
+  opacity: 0.5;
+  min-height: 800px; }
+
+/*
+ * Author: http://stuffandnonsense.co.uk/blog/about/hardboiled_css3_media_queries/
+ */
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */ }
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width: 321px) {
+  /* Styles */ }
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width: 320px) {
+  /* Styles */ }
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */ }
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* Styles */ }
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* Styles */ }
+
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1224px) {
+  /* Styles */ }
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+  /* Styles */ }
+
+/* iPhone 4 ----------- */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  /* Styles */ }

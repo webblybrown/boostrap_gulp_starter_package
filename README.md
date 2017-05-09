@@ -1,6 +1,6 @@
-# Gulp Starter Base Created by Wesley Brown
+# Cherries Court Bootstrap Mini Site
 
-Codebase starter for gulp.js based project using boostrap & font-awesome. Installations managed with node.js and bower.
+Bootstrap based mini website. Design by Wesley Brown for Design Image
 
 ## Requirments
 
@@ -17,10 +17,3 @@ imagemin-pngcrush| |gulp-uglify
 | | |gulp-sass
 | | |gulp-inject
 | | |gulp-imagemin
-
-
-
-
-
-
-

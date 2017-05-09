@@ -1,11 +1,11 @@
 {
-  "name": "Bootstrap and Gulp Starter Base",
+  "name": "Cherries-Court",
   "version": "1.0.0",
-  "description": "Codebase starter for gulp.js based project using boostrap",
+  "description": "Bootstrap based mini website. Design by Wesley Brown for Design Image",
   "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webblybrown/boostrap_gulp_starter_package.git"
+    "url": "https://github.com/DesignImage/cherries-court-bootstrap.git"
   },
   "author": "Wesley Brown",
   "devDependencies": {
@@ -25,5 +25,8 @@
     "imagemin-pngcrush": "^5.1.0",
     "jquery": "^3.2.1",
     "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "owl.carousel": "^2.2.0"
   }
 }

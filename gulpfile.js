@@ -90,22 +90,10 @@ gulp.task('css', function(){
     addRootSlash: false
   };
   
-  var injectFontAwesomeFiles = gulp.src('bower_components/font-awesome/scss/font-awesome.scss', {read: false});
- 
-  function transformFontAwesomeFilepath(filepath) {
-    return '@import "' + filepath + '";';
-  }
- 
-  var injectFontAwesomeOptions = {
-    transform: transformFontAwesomeFilepath,
-    starttag: '// inject:font-awesome',
-    endtag: '// endinject-font-awesome',
-    addRootSlash: false
-  };
+
 
   return gulp.src('components/sass/style.scss')
     .pipe(wiredep())
-    .pipe(inject(injectFontAwesomeFiles, injectFontAwesomeOptions))
     .pipe(inject(injectBootstrapFiles, injectBootstrapOptions))
     .pipe(sass())
     .pipe(gulp.dest(outputDir + 'css'))
