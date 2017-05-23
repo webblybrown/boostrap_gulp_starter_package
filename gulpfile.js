@@ -9,9 +9,10 @@ var gulp = require('gulp'),
     bower = require('gulp-bower');
     sass = require('gulp-sass');
     inject = require('gulp-inject');
-    wiredep = require('wiredep').stream;
     imagemin = require('gulp-imagemin');
-    pngcrush = require('imagemin-pngcrush');
+    pngcrush = require('imagemin-pngcrush');  
+    wiredep = require('wiredep').stream;
+
 
 // Create gulp plugins from node install
 // npm install --save-dev gulp-**
