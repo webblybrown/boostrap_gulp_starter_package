@@ -1,6 +1,6 @@
-# Cherries Court Bootstrap Mini Site
+# Gulp Boostrap Starter
 
-Bootstrap based mini website. Design by Wesley Brown for Design Image
+Bootstrap based gulp starter 
 
 ## Requirments
 
